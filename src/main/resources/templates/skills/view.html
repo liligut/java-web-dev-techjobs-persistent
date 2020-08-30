@@ -11,10 +11,11 @@
     <p th:text="${'Name: ' + skill.name}"></p>
     <p th:text="${'Description: ' + skill.description}"></p>
     <p> Jobs:
-        <ul>
+        <ul th:if="${skill.jobs} and ${skill.jobs.size()}">
             <li th:each="job : ${skill.jobs}">
                 <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
             </li>
         </ul>
     </p>
+    <span th:unless="${skill.jobs} and ${skill.jobs.size()}">There are no jobs with that skill.</span>
 </div>
